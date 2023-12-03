@@ -1,20 +1,17 @@
 import { useLocation } from 'react-router-dom'
 
-import {
-  StyledMobileSidebar,
-  StyledMobileSidebarItemContainer
-} from './mobile-sidebar.style'
 import { LayoutIcon } from '../../../icons/LayoutIcon'
-import { MobileSidebarItem } from './MobileSidebarItem'
+import { MobileSidebarItem } from './MobileTabBarItem'
 import { LayoutTopLineIcon } from '../../../icons/LayoutTopLineIcon'
 import { AddCircleFillIcon } from '../../../icons/AddCircleFillIcon'
+import { StyledTabBar, StyledTabBarItemContainer } from './tabbar.style'
 
-export const MobileSidebar = () => {
+export const TabBar = () => {
   const { pathname } = useLocation()
 
   return (
-    <StyledMobileSidebar>
-      <StyledMobileSidebarItemContainer>
+    <StyledTabBar>
+      <StyledTabBarItemContainer>
         <MobileSidebarItem
           title="Dashboard"
           icon={<LayoutIcon />}
@@ -32,7 +29,7 @@ export const MobileSidebar = () => {
           link="/mytask"
           $isSelected={pathname === '/mytask'}
         />
-      </StyledMobileSidebarItemContainer>
-    </StyledMobileSidebar>
+      </StyledTabBarItemContainer>
+    </StyledTabBar>
   )
 }

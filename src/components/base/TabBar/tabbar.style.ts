@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledMobileSidebar = styled.footer`
+export const StyledTabBar = styled.footer`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -9,7 +9,7 @@ export const StyledMobileSidebar = styled.footer`
   background-color: ${({ theme }) => theme.colors.neutral[4]};
 `
 
-export const StyledMobileSidebarItemContainer = styled.ul`
+export const StyledTabBarItemContainer = styled.ul`
   height: 100%;
   width: 100%;
   display: grid;
@@ -17,7 +17,7 @@ export const StyledMobileSidebarItemContainer = styled.ul`
   gap: 5px;
 `
 
-export const StyledMobileSidebarItem = styled.li<StyledSidebarItemProps>`
+export const StyledTabBarItem = styled.li<StyledSidebarItemProps>`
   width: 100%;
   height: 100%;
   color: ${({ theme, $isSelected }) =>

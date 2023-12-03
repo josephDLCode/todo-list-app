@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
+import { TabBar } from '../base/TabBar'
 import { Sidebar } from '../base/Sidebar'
 import { MainContainer } from '../base/MainContainer'
-import { MobileSidebar } from '../base/MobileSidebar'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
@@ -10,7 +10,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <StyledMainLayout $isDesktop={isDesktop}>
-      {isDesktop ? <Sidebar /> : <MobileSidebar />}
+      {isDesktop ? <Sidebar /> : <TabBar />}
       <MainContainer>{children}</MainContainer>
     </StyledMainLayout>
   )

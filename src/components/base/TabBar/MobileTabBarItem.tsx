@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { StyledMobileSidebarItem } from './mobile-sidebar.style'
+import { StyledTabBarItem } from './tabbar.style'
 
 export const MobileSidebarItem: React.FC<SidebarItemProps> = ({
   icon,
@@ -8,11 +8,11 @@ export const MobileSidebarItem: React.FC<SidebarItemProps> = ({
   $isSelected
 }) => {
   return (
-    <StyledMobileSidebarItem $isSelected={$isSelected}>
+    <StyledTabBarItem $isSelected={$isSelected}>
       <Link to={link}>
         {icon}
         <span>{title}</span>
       </Link>
-    </StyledMobileSidebarItem>
+    </StyledTabBarItem>
   )
 }
