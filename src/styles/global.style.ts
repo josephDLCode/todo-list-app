@@ -13,17 +13,17 @@ export const GlobalStyle = createGlobalStyle`
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background-color:  ${({ theme }) => theme.palette.primary.main};
+    background-color:  ${({ theme }) => theme.colors.primary[2]};
     border-radius: 9999px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background-color: ${({ theme }) => theme.palette.primary.dark};
+    background-color: ${({ theme }) => theme.colors.primary[3]};
   }
 
   body {
-    background-color: ${({ theme }) => theme.palette.background};
+    background-color: ${({ theme }) => theme.colors.neutral[5]};
   }
 `
 
@@ -54,6 +54,7 @@ export const NormalizeStyle = createGlobalStyle`
   body {
     margin: 0;
     line-height: inherit;
+    font-family: 'Roboto',sans-serif, 'SF Pro Display';
   }
 
   hr {

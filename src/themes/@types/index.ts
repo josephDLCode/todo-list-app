@@ -1,6 +1,6 @@
 interface ThemeType {
   breakpoints: Breakpoints
-  palette: Palette
+  colors: Palette
   shadows: Shadow
   typography: FontType
 }

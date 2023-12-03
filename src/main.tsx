@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
 
-import App from './App.tsx'
+import { router } from './routes'
 import { Providers } from './contexts/Providers.tsx'
 import { GlobalStyle, NormalizeStyle } from './styles/global.style.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Providers>
-    <App />
+    <RouterProvider router={router} />
     <GlobalStyle />
     <NormalizeStyle />
   </Providers>

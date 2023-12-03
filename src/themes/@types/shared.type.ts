@@ -34,16 +34,8 @@ interface FontType extends Pick<Typography, 'fontFamily' | 'fontSize'> {
 }
 
 interface Palette {
-  common: Common
   primary: Color
   secondary: Color
-  error: Color
-  warning: Color
-  info: Color
-  success: Color
-  grey: GreyColor
-  text: TextColor
-  divider: string
-  background: string
-  mode: 'light' | 'dark'
+  tertiary: Color
+  neutral: Color
 }
