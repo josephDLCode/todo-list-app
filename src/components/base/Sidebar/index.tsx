@@ -5,7 +5,7 @@ import {
   StyledSidebarHeader,
   StyledSidebarItemContainer
 } from './sidebar.style'
-import { AsideItem } from './SidebarItem'
+import { SidebarItem } from './SidebarItem'
 import { ListIcon } from '../../../icons/ListIcon'
 import { LayoutIcon } from '../../../icons/LayoutIcon'
 
@@ -18,17 +18,17 @@ export const Sidebar = () => {
         <img src="/logo-mark.svg" alt="logo-mark" width={40} height={40} />
       </StyledSidebarHeader>
       <StyledSidebarItemContainer>
-        <AsideItem
+        <SidebarItem
           title="Dashboard"
           icon={<LayoutIcon />}
           link="/"
-          isSelected={pathname === '/'}
+          $isSelected={pathname === '/'}
         />
-        <AsideItem
+        <SidebarItem
           title="My Task"
           icon={<ListIcon />}
           link="/mytask"
-          isSelected={pathname === '/mytask'}
+          $isSelected={pathname === '/mytask'}
         />
       </StyledSidebarItemContainer>
     </StyledSidebar>

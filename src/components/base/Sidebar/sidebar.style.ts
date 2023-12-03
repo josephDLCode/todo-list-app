@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-type StyledSidebarItemProps = Pick<SidebarItemProps, 'isSelected'>
-
 export const StyledSidebar = styled.aside`
   background-color: ${({ theme }) => theme.colors.neutral[4]};
   border-radius: 24px;
@@ -27,9 +25,10 @@ export const StyledSidebarItem = styled.li<StyledSidebarItemProps>`
   width: 100%;
   height: 56px;
   display: flex;
-  color: ${({ theme }) => theme.colors.neutral[2]};
-  background: ${({ isSelected }) =>
-    isSelected &&
+  color: ${({ theme, $isSelected }) =>
+    $isSelected ? theme.colors.primary[4] : theme.colors.neutral[2]};
+  background: ${({ $isSelected }) =>
+    $isSelected &&
     'linear-gradient(90deg, rgba(186, 37, 37, 0) 0%,rgba(210, 77, 77, 0.1) 100%)'};
 
   &:hover {
@@ -41,8 +40,8 @@ export const StyledSidebarItem = styled.li<StyledSidebarItemProps>`
     display: inline-block;
     height: 100%;
     width: 4px;
-    background-color: ${({ theme, isSelected }) =>
-      isSelected && theme.colors.primary[4]};
+    background-color: ${({ theme, $isSelected }) =>
+      $isSelected && theme.colors.primary[4]};
   }
 
   a {

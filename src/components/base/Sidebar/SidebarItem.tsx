@@ -1,14 +1,14 @@
 import { StyledSidebarItem } from './sidebar.style'
 import { Link } from 'react-router-dom'
 
-export const AsideItem: React.FC<SidebarItemProps> = ({
+export const SidebarItem: React.FC<SidebarItemProps> = ({
   icon,
   link,
   title,
-  isSelected
+  $isSelected
 }) => {
   return (
-    <StyledSidebarItem isSelected={isSelected}>
+    <StyledSidebarItem $isSelected={$isSelected}>
       <Link to={link}>
         {icon}
         <span>{title.toUpperCase()}</span>
