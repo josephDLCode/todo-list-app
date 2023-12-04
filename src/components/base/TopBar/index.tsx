@@ -1,5 +1,3 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-
 import { Button } from '../../uis/Button'
 import { StyledTopBar } from './topbar.style'
 import { ListIcon } from '../../../icons/ListIcon'
@@ -7,21 +5,18 @@ import { SwitchButton } from '../../uis/SwitchButton'
 import { LayoutIcon } from '../../../icons/LayoutIcon'
 import { AddLineIcon } from '../../../icons/AddLineIcon'
 
-export const TopBar = () => {
-  const navigate = useNavigate()
-  const { pathname } = useLocation()
-
+export const TopBar: React.FC<TopBarProps> = ({ navigate, pathname }) => {
   return (
     <StyledTopBar>
       <div>
         <SwitchButton
-          isSelected={pathname === '/mytask'}
+          $isSelected={pathname === '/mytask'}
           onClick={() => navigate('/mytask')}
         >
           <ListIcon />
         </SwitchButton>
         <SwitchButton
-          isSelected={pathname === '/'}
+          $isSelected={pathname === '/'}
           onClick={() => navigate('/')}
         >
           <LayoutIcon />
