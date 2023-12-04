@@ -23,5 +23,5 @@ const StyledMainLayout = styled.div<{ $isDesktop: boolean }>`
   gap: 32px;
   height: 100vh;
   width: 100vw;
-  padding: 32px;
+  padding: ${({ $isDesktop }) => ($isDesktop ? '32px' : '8px 16px')};
 `

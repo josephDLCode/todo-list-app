@@ -39,14 +39,7 @@ export const StyledInput = styled.div`
 
     &[type='search'] {
       &::-webkit-search-cancel-button {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         -webkit-appearance: none;
-        background-image: url('/src/assets/search-close.svg');
       }
     }
   }

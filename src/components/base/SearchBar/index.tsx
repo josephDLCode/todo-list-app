@@ -1,24 +1,36 @@
+import { useContext } from 'react'
+
 import { Input } from '../../uis/Input'
-import { Avatar } from '../../uis/Avatar'
-import { BellIcon } from '../../../icons/BellIcon'
+import { HeaderIcon } from '../HeaderIcon'
 import { SearchLineIcon } from '../../../icons/SearchLineIcon'
+import { SearchContext } from '../../../contexts/SearchContext'
 
 export const SearchBar = () => {
-  const getEndIcon = () => {
-    return (
-      <>
-        <BellIcon />
-        <Avatar src="https://picsum.photos/50" />
-      </>
-    )
-  }
+  const {
+    isSelected,
+    searchValue,
+    clearSearch,
+    handleBlur,
+    handleChange,
+    handleFocus
+  } = useContext(SearchContext)
 
   return (
     <Input
-      startIcon={<SearchLineIcon />}
       type="search"
       placeholder="Search"
-      endIcon={getEndIcon()}
+      startIcon={<SearchLineIcon />}
+      endIcon={
+        <HeaderIcon
+          isSearchSelected={isSelected}
+          isDesktop
+          clearSearch={clearSearch}
+        />
+      }
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onChange={handleChange}
+      value={searchValue}
     />
   )
 }

@@ -1,15 +1,14 @@
+import { forwardRef } from 'react'
 import { StyledInput } from './input.style'
 
-export const Input: React.FC<InputProps> = ({
-  startIcon,
-  endIcon,
-  ...props
-}) => {
-  return (
-    <StyledInput>
-      <div className="start-icon">{startIcon}</div>
-      <input {...props} />
-      <div className="end-icon">{endIcon}</div>
-    </StyledInput>
-  )
-}
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ startIcon, endIcon, ...props }, ref) => {
+    return (
+      <StyledInput>
+        <div className="start-icon">{startIcon}</div>
+        <input ref={ref} {...props} />
+        <div className="end-icon">{endIcon}</div>
+      </StyledInput>
+    )
+  }
+)
