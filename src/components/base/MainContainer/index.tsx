@@ -1,3 +1,4 @@
+import { TopBar } from '../TopBar'
 import { SearchBar } from '../SearchBar'
 import { TopNavBar } from '../TopNavBar'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
@@ -9,6 +10,7 @@ export const MainContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <StyledMainContainer>
       {isDesktop ? <SearchBar /> : <TopNavBar />}
+      <TopBar />
       {children}
     </StyledMainContainer>
   )

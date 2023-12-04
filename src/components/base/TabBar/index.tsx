@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 
+import { TabBarItem } from './MobileTabBarItem'
 import { LayoutIcon } from '../../../icons/LayoutIcon'
-import { MobileSidebarItem } from './MobileTabBarItem'
 import { LayoutTopLineIcon } from '../../../icons/LayoutTopLineIcon'
 import { AddCircleFillIcon } from '../../../icons/AddCircleFillIcon'
 import { StyledTabBar, StyledTabBarItemContainer } from './tabbar.style'
@@ -12,18 +12,14 @@ export const TabBar = () => {
   return (
     <StyledTabBar>
       <StyledTabBarItemContainer>
-        <MobileSidebarItem
+        <TabBarItem
           title="Dashboard"
           icon={<LayoutIcon />}
           link="/"
           $isSelected={pathname === '/'}
         />
-        <MobileSidebarItem
-          title="Add Project"
-          icon={<AddCircleFillIcon />}
-          link="/"
-        />
-        <MobileSidebarItem
+        <TabBarItem title="Add Project" icon={<AddCircleFillIcon />} link="/" />
+        <TabBarItem
           title="My Task"
           icon={<LayoutTopLineIcon />}
           link="/mytask"

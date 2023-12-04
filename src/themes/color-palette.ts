@@ -18,7 +18,7 @@ export const colors = {
     4: '#E5B454'
   },
   neutral: {
-    1: '#FFF',
+    1: '#FFFFFF',
     2: '#94979A',
     3: '#393D41',
     4: '#2C2F33',

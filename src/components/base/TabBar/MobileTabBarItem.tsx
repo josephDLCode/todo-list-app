@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { StyledTabBarItem } from './tabbar.style'
 
-export const MobileSidebarItem: React.FC<SidebarItemProps> = ({
+export const TabBarItem: React.FC<SidebarItemProps> = ({
   icon,
   link,
   title,
