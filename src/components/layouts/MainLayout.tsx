@@ -20,6 +20,7 @@ const StyledMainLayout = styled.div<{ $isDesktop: boolean }>`
   display: grid;
   grid-template-columns: ${({ $isDesktop }) =>
     $isDesktop ? '232px 1fr' : '1fr'};
+  grid-template-rows: calc(100vh - 64px);
   gap: 32px;
   height: 100vh;
   width: 100vw;
