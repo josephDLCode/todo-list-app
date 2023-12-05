@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+
 import {
   StyledTaskCard,
   StyledTaskCardBody,
@@ -18,41 +20,43 @@ import { MoreFillIcon } from '../../../icons/MoreFillIcon'
 import { NodeTreeIcon } from '../../../icons/NodeTreeIcon'
 import { AlarmLineIcon } from '../../../icons/AlarmLineIcon'
 
-export const TaskCard: React.FC<TaskCardProps> = ({ title }) => {
-  return (
-    <StyledTaskCard>
-      <StyledTaskCardHeader>
-        <StyledTaskCardHeaderTitle>{title}</StyledTaskCardHeaderTitle>
-        <IconButton>
-          <MoreFillIcon />
-        </IconButton>
-      </StyledTaskCardHeader>
-      <StyledTaskCardBody>
-        <StyledTaskCardBodyFirstRow>
-          <span className="points">4 Points</span>
-          <Badge title="Today" icon={<AlarmLineIcon />} />
-        </StyledTaskCardBodyFirstRow>
-        <StyledTaskCardBodySecondRow>
-          <Badge title="IOS APP" $type="green" />
-          <Badge title="ANDROID" $type="yellow" />
-        </StyledTaskCardBodySecondRow>
-      </StyledTaskCardBody>
-      <StyledTaskCardFooter>
-        <Avatar src="https://picsum.photos/50" $size="sm" />
-        <StyledTaskCardFooterIconsList>
-          <StyledTaskCardFooterIcons>
-            <FileIcon />
-          </StyledTaskCardFooterIcons>
-          <StyledTaskCardFooterIcons>
-            <span>5</span>
-            <NodeTreeIcon />
-          </StyledTaskCardFooterIcons>
-          <StyledTaskCardFooterIcons>
-            <span>3</span>
-            <ChatIcon />
-          </StyledTaskCardFooterIcons>
-        </StyledTaskCardFooterIconsList>
-      </StyledTaskCardFooter>
-    </StyledTaskCard>
-  )
-}
+export const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(
+  ({ title, ...props }, ref) => {
+    return (
+      <StyledTaskCard ref={ref} {...props}>
+        <StyledTaskCardHeader>
+          <StyledTaskCardHeaderTitle>{title}</StyledTaskCardHeaderTitle>
+          <IconButton>
+            <MoreFillIcon />
+          </IconButton>
+        </StyledTaskCardHeader>
+        <StyledTaskCardBody>
+          <StyledTaskCardBodyFirstRow>
+            <span className="points">4 Points</span>
+            <Badge title="Today" icon={<AlarmLineIcon />} />
+          </StyledTaskCardBodyFirstRow>
+          <StyledTaskCardBodySecondRow>
+            <Badge title="IOS APP" $type="green" />
+            <Badge title="ANDROID" $type="yellow" />
+          </StyledTaskCardBodySecondRow>
+        </StyledTaskCardBody>
+        <StyledTaskCardFooter>
+          <Avatar src="https://picsum.photos/50" $size="sm" />
+          <StyledTaskCardFooterIconsList>
+            <StyledTaskCardFooterIcons>
+              <FileIcon />
+            </StyledTaskCardFooterIcons>
+            <StyledTaskCardFooterIcons>
+              <span>5</span>
+              <NodeTreeIcon />
+            </StyledTaskCardFooterIcons>
+            <StyledTaskCardFooterIcons>
+              <span>3</span>
+              <ChatIcon />
+            </StyledTaskCardFooterIcons>
+          </StyledTaskCardFooterIconsList>
+        </StyledTaskCardFooter>
+      </StyledTaskCard>
+    )
+  }
+)
