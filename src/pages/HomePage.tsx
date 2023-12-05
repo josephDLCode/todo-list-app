@@ -1,10 +1,10 @@
-import { Dashboard } from '../components/views/dashboard'
 import { MainLayout } from '../components/layouts/MainLayout'
+import { TaskList } from '../components/views/dashboard/TaskList'
 
 export default function HomePage() {
   return (
     <MainLayout>
-      <Dashboard />
+      <TaskList />
     </MainLayout>
   )
 }
