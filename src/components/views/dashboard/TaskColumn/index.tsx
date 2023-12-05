@@ -7,24 +7,19 @@ import {
   StyledTaskColumnTitle
 } from './task-column.style'
 
-export const TaskColumn: React.FC<TaskColumn> = ({
-  title,
-  tasks,
-  id,
-  taskIds
-}) => {
+export const TaskColumn: React.FC<TaskColumn> = ({ title, tasks, id }) => {
   return (
     <StyledTaskColumn>
       <StyledTaskColumnTitle>{title}</StyledTaskColumnTitle>
       <Droppable droppableId={id}>
-        {(droppableProvided, droppableSnapshot) => (
+        {droppableProvided => (
           <StyledTaskColumnBody
             ref={droppableProvided.innerRef}
             {...droppableProvided.droppableProps}
           >
             {tasks?.map((task, index) => (
               <Draggable key={task.id} draggableId={task.id} index={index}>
-                {(draggableProvided, draggableSnapshot) => (
+                {draggableProvided => (
                   <TaskCard
                     ref={draggableProvided.innerRef}
                     {...draggableProvided.draggableProps}

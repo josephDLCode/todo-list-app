@@ -108,7 +108,6 @@ export const TaskList = () => {
               id={column.id}
               key={column.id}
               title={column.title}
-              taskIds={column.taskIds as any}
             />
           )
         })}
