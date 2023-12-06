@@ -14,3 +14,17 @@ export function reorderColumnList(
 
   return newColumn
 }
+
+export function getTaskIds(task: Task[], status: Status) {
+  return task.filter(task => task.status === status).map(task => task.id)
+}
+
+export function structureTaskList(tasks: Task[]) {
+  let taskList: TaskType = {}
+
+  tasks.forEach(task => {
+    taskList[task.id] = task
+  })
+
+  return taskList
+}

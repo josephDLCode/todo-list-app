@@ -1,41 +1,36 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 import { TaskColumn } from '../TaskColumn'
 import { StyledTaskList } from './task-list.style'
 import { reorderColumnList } from '../../../../utils/task-list.util'
 
-export const TaskList = () => {
-  const initialData: any = {
-    tasks: {
-      1: { id: '1', title: 'Google' },
-      2: { id: '2', title: 'Twitter' },
-      3: { id: '3', title: 'Slack' },
-      4: { id: '4', title: 'Maxxis Tyres' },
-      5: { id: '5', title: 'Samsung' },
-      6: { id: '6', title: 'Tesla' }
-    },
+export const TaskList: React.FC<TaskListProps> = ({
+  tasks,
+  columnOrder,
+  tasksIdsForState
+}) => {
+  const [data, setData] = useState({
+    tasks: {} as TaskType,
     columns: {
-      'column-1': {
-        id: 'column-1',
+      TODO: {
+        id: 'TODO',
         title: 'Working (03)',
-        taskIds: ['1', '2', '3', '4', '5', '6']
+        taskIds: []
       },
-      'column-2': {
-        id: 'column-2',
+      IN_PROGRESS: {
+        id: 'IN_PROGRESS',
         title: 'In Progress (03)',
         taskIds: []
       },
-      'column-3': {
-        id: 'column-3',
+      DONE: {
+        id: 'DONE',
         title: 'Completed (03)',
         taskIds: []
       }
-    },
-    columnOrder: ['column-1', 'column-2', 'column-3']
-  }
-
-  const [data, setData] = useState(initialData)
+    } as TaskIdsType,
+    columnOrder
+  })
 
   const handleDragEnd = (result: DropResult) => {
     const { destination, source } = result
@@ -95,10 +90,32 @@ export const TaskList = () => {
     setData(newState)
   }
 
+  useEffect(() => {
+    setData({
+      ...data,
+      tasks,
+      columns: {
+        ...data.columns,
+        TODO: {
+          ...data.columns.TODO,
+          taskIds: tasksIdsForState.TODO
+        },
+        IN_PROGRESS: {
+          ...data.columns.IN_PROGRESS,
+          taskIds: tasksIdsForState.IN_PROGRESS
+        },
+        DONE: {
+          ...data.columns.DONE,
+          taskIds: tasksIdsForState.DONE
+        }
+      }
+    })
+  }, [tasks])
+
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <StyledTaskList>
-        {data.columnOrder.map((columnId: any) => {
+        {data.columnOrder.map(columnId => {
           const column = data.columns[columnId]
           const tasks = column.taskIds.map((taskId: any) => data.tasks[taskId])
 

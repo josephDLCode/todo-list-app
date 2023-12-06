@@ -1,1 +1,20 @@
-interface DashboardColumn {}
+interface TaskListProps {
+  tasks: TaskType
+  tasksIdsForState: TasksIdsForState
+  columnOrder: string[]
+}
+
+interface Column {
+  id: string
+  title: string
+  taskIds: string[]
+}
+
+type TaskIdsType = Record<string, Column>
+type TaskType = Record<string, Task>
+
+type TasksIdsForState = {
+  TODO: string[]
+  IN_PROGRESS: string[]
+  DONE: string[]
+}

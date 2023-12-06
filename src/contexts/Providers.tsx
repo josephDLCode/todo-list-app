@@ -1,5 +1,6 @@
 import { ApolloProvider } from '@apollo/client'
 
+import { TaskProvider } from './TaskContext'
 import { ModalProvider } from './ModalContext'
 import { SearchProvider } from './SearchContext'
 import GlobalThemeProvider from './ThemeContext'
@@ -9,9 +10,11 @@ export const Providers = ({ children }: { children?: React.ReactNode }) => {
   return (
     <ApolloProvider client={apolloClient}>
       <GlobalThemeProvider>
-        <ModalProvider>
-          <SearchProvider>{children}</SearchProvider>
-        </ModalProvider>
+        <TaskProvider>
+          <ModalProvider>
+            <SearchProvider>{children}</SearchProvider>
+          </ModalProvider>
+        </TaskProvider>
       </GlobalThemeProvider>
     </ApolloProvider>
   )

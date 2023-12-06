@@ -19,29 +19,45 @@ import { FileIcon } from '../../../icons/FileIcon'
 import { MoreFillIcon } from '../../../icons/MoreFillIcon'
 import { NodeTreeIcon } from '../../../icons/NodeTreeIcon'
 import { AlarmLineIcon } from '../../../icons/AlarmLineIcon'
+import { getBadgeTypeByTag, getTaskPoints } from '../../../utils/task-card.util'
+import { compareTime } from '../../../utils/common.util'
 
-export const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(
-  ({ title, ...props }, ref) => {
+export const TaskCard = forwardRef<HTMLDivElement, Task>(
+  ({ name, pointEstimate, dueDate, tags, status, assignee, ...props }, ref) => {
+    const time = compareTime(dueDate)
+    const { __typename, ...propsRest } = props
+
     return (
-      <StyledTaskCard ref={ref} {...props}>
+      <StyledTaskCard ref={ref} {...propsRest}>
         <StyledTaskCardHeader>
-          <StyledTaskCardHeaderTitle>{title}</StyledTaskCardHeaderTitle>
+          <StyledTaskCardHeaderTitle>{name}</StyledTaskCardHeaderTitle>
           <IconButton>
             <MoreFillIcon />
           </IconButton>
         </StyledTaskCardHeader>
         <StyledTaskCardBody>
           <StyledTaskCardBodyFirstRow>
-            <span className="points">4 Points</span>
-            <Badge title="TODAY" icon={<AlarmLineIcon />} />
+            <span className="points">
+              {getTaskPoints(pointEstimate)} Points
+            </span>
+            <Badge
+              title={time}
+              $type={time === 'YESTERDAY' ? 'red' : 'general'}
+              icon={<AlarmLineIcon />}
+            />
           </StyledTaskCardBodyFirstRow>
           <StyledTaskCardBodySecondRow>
-            <Badge title="IOS APP" $type="green" />
-            <Badge title="ANDROID" $type="yellow" />
+            {tags?.map((tag, index) => (
+              <Badge key={index} title={tag} $type={getBadgeTypeByTag(tag)} />
+            ))}
           </StyledTaskCardBodySecondRow>
         </StyledTaskCardBody>
         <StyledTaskCardFooter>
-          <Avatar src="https://picsum.photos/50" $size="sm" />
+          <Avatar
+            src={assignee?.avatar || 'https://picsum.photos/50'}
+            alt={assignee?.fullName}
+            $size="sm"
+          />
           <StyledTaskCardFooterIconsList>
             <StyledTaskCardFooterIcons>
               <FileIcon />
