@@ -28,3 +28,8 @@ export function structureTaskList(tasks: Task[]) {
 
   return taskList
 }
+
+export function separateColumnTitle(title: string) {
+  const index = title.indexOf('(')
+  return title.substring(0, index)
+}

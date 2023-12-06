@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
+import {
+  reorderColumnList,
+  separateColumnTitle
+} from '../../../../utils/task-list.util'
 import { TaskColumn } from '../TaskColumn'
 import { StyledTaskList } from './task-list.style'
-import { reorderColumnList } from '../../../../utils/task-list.util'
 
 export const TaskList: React.FC<TaskListProps> = ({
   tasks,
@@ -15,17 +18,17 @@ export const TaskList: React.FC<TaskListProps> = ({
     columns: {
       TODO: {
         id: 'TODO',
-        title: 'Working (03)',
+        title: 'Working',
         taskIds: []
       },
       IN_PROGRESS: {
         id: 'IN_PROGRESS',
-        title: 'In Progress (03)',
+        title: 'In Progress',
         taskIds: []
       },
       DONE: {
         id: 'DONE',
-        title: 'Completed (03)',
+        title: 'Completed',
         taskIds: []
       }
     } as TaskIdsType,
@@ -68,6 +71,7 @@ export const TaskList: React.FC<TaskListProps> = ({
     const [removed] = startTaskIds.splice(source.index, 1)
     const newStartCol = {
       ...sourceCol,
+      title: `${separateColumnTitle(sourceCol.title)}(${startTaskIds.length})`,
       taskIds: startTaskIds
     }
 
@@ -75,8 +79,13 @@ export const TaskList: React.FC<TaskListProps> = ({
     endTaskIds.splice(destination.index, 0, removed)
     const newEndCol = {
       ...destinationCol,
+      title: `${separateColumnTitle(destinationCol.title)}(${
+        endTaskIds.length
+      })`,
       taskIds: endTaskIds
     }
+
+    console.log(newStartCol, newEndCol)
 
     const newState = {
       ...data,
@@ -98,14 +107,17 @@ export const TaskList: React.FC<TaskListProps> = ({
         ...data.columns,
         TODO: {
           ...data.columns.TODO,
+          title: `Working (${tasksIdsForState.TODO.length})`,
           taskIds: tasksIdsForState.TODO
         },
         IN_PROGRESS: {
           ...data.columns.IN_PROGRESS,
+          title: `In Progress (${tasksIdsForState.IN_PROGRESS.length})`,
           taskIds: tasksIdsForState.IN_PROGRESS
         },
         DONE: {
           ...data.columns.DONE,
+          title: `Completed (${tasksIdsForState.DONE.length})`,
           taskIds: tasksIdsForState.DONE
         }
       }
