@@ -27,9 +27,11 @@ export const StyledTabBarItem = styled.li<StyledSidebarItemProps>`
     color: ${({ theme }) => theme.colors.primary[4]};
   }
 
-  a {
+  a,
+  button {
     width: inherit;
     height: inherit;
+    background-color: transparent;
     display: inline-flex;
     flex-direction: column;
     align-items: center;

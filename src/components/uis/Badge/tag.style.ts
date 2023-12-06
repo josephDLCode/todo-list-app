@@ -11,7 +11,6 @@ export const StyledBadge = styled('div')<Omit<BadgeProps, 'title'>>`
     gap: 8px;
     padding: 4px 16px;
     border-radius: 4px;
-    cursor: default;
     color: ${getBadgeColor(theme, $type)};
     background-color: ${$style === 'solid'
       ? getBadgeBackground(theme, $type)
@@ -24,7 +23,6 @@ export const StyledBadge = styled('div')<Omit<BadgeProps, 'title'>>`
       font-weight: 600;
       line-height: 24px;
       letter-spacing: 0.75px;
-      text-transform: uppercase;
     }
 
     svg {

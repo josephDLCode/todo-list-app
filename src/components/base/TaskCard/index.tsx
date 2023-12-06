@@ -10,7 +10,7 @@ import {
   StyledTaskCardBodyFirstRow,
   StyledTaskCardFooterIconsList,
   StyledTaskCardBodySecondRow
-} from './card.style'
+} from './task-card.style'
 import { Badge } from '../../uis/Badge'
 import { Avatar } from '../../uis/Avatar'
 import { IconButton } from '../../uis/IconButton'
@@ -33,7 +33,7 @@ export const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(
         <StyledTaskCardBody>
           <StyledTaskCardBodyFirstRow>
             <span className="points">4 Points</span>
-            <Badge title="Today" icon={<AlarmLineIcon />} />
+            <Badge title="TODAY" icon={<AlarmLineIcon />} />
           </StyledTaskCardBodyFirstRow>
           <StyledTaskCardBodySecondRow>
             <Badge title="IOS APP" $type="green" />
