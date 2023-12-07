@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+This is a TODO List project bootstrapped with [`create vite@latest`](https://vitejs.dev/guide/).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Getting Started
 
-Currently, two official plugins are available:
+First, run the development server:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Project structure
+
+- @types
+- components
+- constants
+- contexts
+- gql
+- hooks
+- icons
+- models
+- pages
+- routes
+- services
+- styles
+- themes
+- utils
+
+## Stay in touch
+
+- Author - [Joseph Francisco De La Cruz Rivas](https://www.linkedin.com/in/joseph-francisco-de-la-cruz-rivas-20a41720b/)
+- Facebook - [Joseph Dlc Rivas](https://www.facebook.com/profile.php?id=100005361438473&locale=es_LA)
+- Instagram - [josephdlcode](https://www.instagram.com/josephdlcode/)
