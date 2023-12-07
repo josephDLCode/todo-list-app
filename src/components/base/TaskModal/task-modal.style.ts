@@ -37,9 +37,28 @@ export const StyledTaskModalFooter = styled.footer`
 `
 
 export const StyledTaskModalBadgeList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  place-items: center;
+
   gap: 8px;
+
+  & > div {
+    position: relative;
+
+    & > button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      text-wrap: nowrap;
+    }
+
+    & > .react-calendar {
+      position: fixed;
+      width: 280px;
+      right: 0;
+    }
+  }
 `

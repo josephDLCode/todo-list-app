@@ -9,8 +9,8 @@ import { TaskColumn } from '../TaskColumn'
 import { StyledTaskList } from './task-list.style'
 
 export const TaskList: React.FC<TaskListProps> = ({
-  tasks,
-  columnOrder,
+  tasks, // taras de la api
+  columnOrder, // arreglo de manera estatica que es los nombres de las columnas
   tasksIdsForState
 }) => {
   const [data, setData] = useState({
@@ -84,8 +84,6 @@ export const TaskList: React.FC<TaskListProps> = ({
       })`,
       taskIds: endTaskIds
     }
-
-    console.log(newStartCol, newEndCol)
 
     const newState = {
       ...data,

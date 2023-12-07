@@ -54,7 +54,7 @@ export const TaskCard = forwardRef<HTMLDivElement, Task>(
         </StyledTaskCardBody>
         <StyledTaskCardFooter>
           <Avatar
-            src={assignee?.avatar || 'https://picsum.photos/50'}
+            src={`https://unavatar.io/gravatar/${assignee?.email}`}
             alt={assignee?.fullName}
             $size="sm"
           />

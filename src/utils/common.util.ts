@@ -16,3 +16,11 @@ export function compareTime(time: Date) {
     return fecha.format('D MMMM, YYYY')
   }
 }
+
+export function formateTimeForCalendar(time: Date) {
+  const fechaFormateada = moment(
+    time,
+    'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ'
+  ).format()
+  return fechaFormateada
+}
