@@ -9,31 +9,64 @@ import {
   StyledTaskCardFooterIcons,
   StyledTaskCardBodyFirstRow,
   StyledTaskCardFooterIconsList,
-  StyledTaskCardBodySecondRow
+  StyledTaskCardBodySecondRow,
+  StyledCardOptions
 } from './task-card.style'
 import { Badge } from '../../uis/Badge'
 import { Avatar } from '../../uis/Avatar'
 import { IconButton } from '../../uis/IconButton'
 import { ChatIcon } from '../../../icons/ChatIcon'
 import { FileIcon } from '../../../icons/FileIcon'
+import { TrashIcon } from '../../../icons/TrashIcon'
+import { compareTime } from '../../../utils/common.util'
 import { MoreFillIcon } from '../../../icons/MoreFillIcon'
 import { NodeTreeIcon } from '../../../icons/NodeTreeIcon'
 import { AlarmLineIcon } from '../../../icons/AlarmLineIcon'
+import { PencilLineIcon } from '../../../icons/PencilLineIcon'
 import { getBadgeTypeByTag, getTaskPoints } from '../../../utils/task-card.util'
-import { compareTime } from '../../../utils/common.util'
 
-export const TaskCard = forwardRef<HTMLDivElement, Task>(
-  ({ name, pointEstimate, dueDate, tags, status, assignee, ...props }, ref) => {
+export const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(
+  (
+    {
+      id,
+      name,
+      tags,
+      status,
+      dueDate,
+      assignee,
+      isOpenOptions,
+      pointEstimate,
+      handleOptions,
+      ...props
+    },
+    ref
+  ) => {
     const time = compareTime(dueDate)
     const { __typename, ...propsRest } = props
+
+    const handleDelete = () => {
+      console.log('delete', id)
+    }
 
     return (
       <StyledTaskCard ref={ref} {...propsRest}>
         <StyledTaskCardHeader>
           <StyledTaskCardHeaderTitle>{name}</StyledTaskCardHeaderTitle>
-          <IconButton>
+          <IconButton onClick={() => handleOptions && handleOptions(id)}>
             <MoreFillIcon />
           </IconButton>
+          {isOpenOptions && (
+            <StyledCardOptions>
+              <li className="option-item">
+                <PencilLineIcon className="option-icon" />
+                <span>Edit</span>
+              </li>
+              <li className="option-item" onClick={handleDelete}>
+                <TrashIcon className="option-icon" />
+                <span>Delete</span>
+              </li>
+            </StyledCardOptions>
+          )}
         </StyledTaskCardHeader>
         <StyledTaskCardBody>
           <StyledTaskCardBodyFirstRow>

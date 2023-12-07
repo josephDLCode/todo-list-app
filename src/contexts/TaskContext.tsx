@@ -5,7 +5,6 @@ import { getTaskIds, structureTaskList } from '../utils/task-list.util'
 
 interface TaskContextProps {
   taskList: TaskType
-  columnOrder: string[]
   taskIdsForTodo: string[]
   taskIdsForDone: string[]
   taskIdsForInProgress: string[]
@@ -16,20 +15,18 @@ export const TaskContext = createContext<TaskContextProps>(
 )
 
 export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
-  const { data, loading, error } = useTask()
+  const { tasks } = useTask()
 
-  const tasks = data?.tasks || []
-  const taskList = structureTaskList(tasks)
-  const taskIdsForTodo = getTaskIds(tasks, 'TODO')
-  const taskIdsForInProgress = getTaskIds(tasks, 'IN_PROGRESS')
-  const taskIdsForDone = getTaskIds(tasks, 'DONE')
-  const columnOrder = ['TODO', 'IN_PROGRESS', 'DONE']
+  const tasksArray = tasks.data?.tasks || []
+  const taskList = structureTaskList(tasksArray)
+  const taskIdsForTodo = getTaskIds(tasksArray, 'TODO')
+  const taskIdsForInProgress = getTaskIds(tasksArray, 'IN_PROGRESS')
+  const taskIdsForDone = getTaskIds(tasksArray, 'DONE')
 
   return (
     <TaskContext.Provider
       value={{
         taskList,
-        columnOrder,
         taskIdsForTodo,
         taskIdsForInProgress,
         taskIdsForDone

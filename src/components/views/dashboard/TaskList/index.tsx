@@ -7,33 +7,17 @@ import {
 } from '../../../../utils/task-list.util'
 import { TaskColumn } from '../TaskColumn'
 import { StyledTaskList } from './task-list.style'
+import { TASK_LIST_STATUS } from '../../../../constants/task-list.constant'
+import { useTask } from '../../../../hooks/useTask'
 
 export const TaskList: React.FC<TaskListProps> = ({
-  tasks, // taras de la api
-  columnOrder, // arreglo de manera estatica que es los nombres de las columnas
+  tasks,
   tasksIdsForState
 }) => {
-  const [data, setData] = useState({
-    tasks: {} as TaskType,
-    columns: {
-      TODO: {
-        id: 'TODO',
-        title: 'Working',
-        taskIds: []
-      },
-      IN_PROGRESS: {
-        id: 'IN_PROGRESS',
-        title: 'In Progress',
-        taskIds: []
-      },
-      DONE: {
-        id: 'DONE',
-        title: 'Completed',
-        taskIds: []
-      }
-    } as TaskIdsType,
-    columnOrder
-  })
+  const [data, setData] = useState(TASK_LIST_STATUS)
+  const {
+    updateTask: { updateTaskFn }
+  } = useTask()
 
   const handleDragEnd = (result: DropResult) => {
     const { destination, source } = result
@@ -94,6 +78,15 @@ export const TaskList: React.FC<TaskListProps> = ({
       }
     }
 
+    // Update Task Status
+    updateTaskFn({
+      variables: {
+        input: {
+          id: removed,
+          status: newEndCol.id
+        }
+      }
+    })
     setData(newState)
   }
 

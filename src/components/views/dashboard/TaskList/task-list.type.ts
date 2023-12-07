@@ -1,7 +1,6 @@
 interface TaskListProps {
   tasks: TaskType
   tasksIdsForState: TasksIdsForState
-  columnOrder: string[]
 }
 
 interface Column {

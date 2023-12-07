@@ -45,13 +45,13 @@ export const SELECTOR_ASSIGNEE_ITEMS = [
       icon: (
         <Avatar
           $size="sm"
-          alt="jeromeBell12@gmail.com"
+          alt="gstone@fake.com"
           src="https://i.stack.imgur.com/hMDvl.jpg?s=256&g=1"
         />
       ),
-      text: 'Jerome Bell'
+      text: 'Grace Stone'
     },
-    value: 'jeromeBell12@gmail.com'
+    value: '703de395-1d49-4471-aafa-d990dcf32cd1'
   },
   // generar mas items con el mismo formato pero con el icon diferente usando imagenes de gravatar
   {
@@ -59,77 +59,78 @@ export const SELECTOR_ASSIGNEE_ITEMS = [
       icon: (
         <Avatar
           $size="sm"
-          alt="rfox2010@gmail.com"
+          alt="jdoe@fake.com"
           src="https://i.stack.imgur.com/mfavW.png?s=128&g=1"
         />
       ),
-      text: 'Robert Fox'
+      text: 'Jhon Doe'
     },
-    value: 'rfox2010@gmail.com'
+    value: 'a35d73eb-6829-4a92-ab82-43fe987ae02f'
   },
   {
     label: {
       icon: (
         <Avatar
           $size="sm"
-          alt="marmck_22@gmail.com"
+          alt="rbarnes@fake.com"
           src="https://i.stack.imgur.com/8b7FJ.jpg?s=128&g=1"
         />
       ),
-      text: 'Marvin McKinney'
+      text: 'Romeo Barnes'
     },
-    value: 'marmck_22@gmail.com'
+    value: '885fe214-60ac-4860-80cc-9c58179c59b4'
   },
   {
     label: {
       icon: (
         <Avatar
           $size="sm"
-          alt="joneco@gmail.com"
+          alt="razorij20@gmail.com"
           src="https://i.stack.imgur.com/aW4ez.jpg?s=128&g=1"
         />
       ),
-      text: 'Jone Cooper'
+      text: 'Joseph Francisco De La Cruz Rivas'
     },
-    value: 'joneco@gmail.com'
-  },
-  {
-    label: {
-      icon: (
-        <Avatar
-          $size="sm"
-          alt="raed_guards@gmail.com"
-          src="https://i.stack.imgur.com/SxEaw.jpg?s=128&g=1ack.imgur.com/aW4ez.jpg?s=128&g=1"
-        />
-      ),
-      text: 'Ralph Edwards'
-    },
-    value: 'raed_guards@gmail.com'
-  },
-  {
-    label: {
-      icon: (
-        <Avatar
-          $size="sm"
-          alt="w2garren@gmail.com"
-          src="https://lh3.googleusercontent.com/a/ACg8ocIQoMTSBI_1UQ1UHOcDLZI1HGAjDQrModuL_VpDJpyflRQ=k-s96"
-        />
-      ),
-      text: 'Wade Warren'
-    },
-    value: 'w2garren@gmail.com'
-  },
-  {
-    label: {
-      icon: (
-        <Avatar
-          $size="sm"
-          alt="savannaguyen@gmail.com"
-          src="https://i.stack.imgur.com/n1doi.jpg?s=128&g=1"
-        />
-      ),
-      text: 'Savannah Nguyen'
-    },
-    value: 'savannaguyen@gmail.com'
+    value: '5c103c09-3f11-44c7-be4d-50122eebfd1f'
   }
 ]
+
+export const SELECTOR_TASK_TAG_ITEMS = [
+  {
+    label: {
+      text: 'ANDROID'
+    },
+    value: 'ANDROID'
+  },
+  {
+    label: {
+      text: 'IOS'
+    },
+    value: 'IOS'
+  },
+  {
+    label: {
+      text: 'NODE_JS'
+    },
+    value: 'NODE_JS'
+  },
+  {
+    label: {
+      text: 'RAILS'
+    },
+    value: 'RAILS'
+  },
+  {
+    label: {
+      text: 'REACT'
+    },
+    value: 'REACT'
+  }
+]
+
+export const TASK_MODAL_STATUS = {
+  estimate: false,
+  assignee: false,
+  label: false,
+  dueDate: false
+}
