@@ -1,6 +1,10 @@
 import { useQuery, useMutation } from '@apollo/client'
 import { GET_TASKS } from '../gql/task/task.query'
-import { CREATE_TASK, UPDATE_TASK } from '../gql/task/task.mutation'
+import {
+  CREATE_TASK,
+  DELETE_TASK,
+  UPDATE_TASK
+} from '../gql/task/task.mutation'
 
 export const useTask = () => {
   const tasks = useQuery<{ tasks: Task[] }>(GET_TASKS, {
@@ -35,7 +39,7 @@ export const useTask = () => {
     }
   })
 
-  const [deleteTaskFn, deleteTaskRes] = useMutation<Task>(UPDATE_TASK, {
+  const [deleteTaskFn, deleteTaskRes] = useMutation<Task>(DELETE_TASK, {
     refetchQueries() {
       return [
         {

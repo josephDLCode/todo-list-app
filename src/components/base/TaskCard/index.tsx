@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, useContext } from 'react'
 
 import {
   StyledTaskCard,
@@ -24,6 +24,7 @@ import { NodeTreeIcon } from '../../../icons/NodeTreeIcon'
 import { AlarmLineIcon } from '../../../icons/AlarmLineIcon'
 import { PencilLineIcon } from '../../../icons/PencilLineIcon'
 import { getBadgeTypeByTag, getTaskPoints } from '../../../utils/task-card.util'
+import { ModalContext } from '../../../contexts/ModalContext'
 
 export const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(
   (
@@ -43,9 +44,11 @@ export const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(
   ) => {
     const time = compareTime(dueDate)
     const { __typename, ...propsRest } = props
+    const { setOpenDeleteModal, setTask } = useContext(ModalContext)
 
     const handleDelete = () => {
-      console.log('delete', id)
+      setOpenDeleteModal(true)
+      setTask({ id, name })
     }
 
     return (
