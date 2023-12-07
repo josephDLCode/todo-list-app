@@ -5,9 +5,14 @@ This is a TODO List project bootstrapped with [`create vite@latest`](https://vit
 First, run the development server:
 
 ```bash
+# Install dependencies
+npm install
+
+# Run project development enviroment
 npm run dev
-# or
-yarn dev
+
+# Building Porject
+npm run build
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
