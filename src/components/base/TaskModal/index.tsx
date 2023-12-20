@@ -10,29 +10,25 @@ import {
 import {
   SELECTOR_ASSIGNEE_ITEMS,
   SELECTOR_ESTIMATE_ITEMS,
-  SELECTOR_TASK_TAG_ITEMS,
-  TASK_MODAL_STATUS
+  SELECTOR_TASK_TAG_ITEMS
 } from '../../../constants/task-modal.constant'
 import { Modal } from '../../ui/Modal'
 import { Button } from '../../ui/Button'
 import { Selector } from '../../ui/Selector'
 import { useTask } from '../../../hooks/useTask'
+import { UserFillIcon } from '../../../icons/UserFillIcon'
+import { PriceTagFillIcon } from '../../../icons/PriceTagFillIcon'
 import { formateTimeForCalendar } from '../../../utils/common.util'
+import { IncreaseDecreaseIcon } from '../../../icons/IncreaseDecreaseIcon'
 
 export const TaskModal: React.FC<TaskModalProps> = ({ open, onClose }) => {
-  const [estimate, setEstimate] = useState({
-    label: '',
-    value: ''
+  const [tags, setTags] = useState({
+    name: '',
+    pointEstimate: '',
+    tags: [] as string[],
+    assigneeId: ''
   })
-  const [dueDate, setDueDate] = useState('')
-  const [label, setLabel] = useState<string[]>([])
-  const [title, setTitle] = useState('')
-  const [assignee, setAssignee] = useState({
-    icon: undefined as JSX.Element | undefined,
-    title: '',
-    id: ''
-  })
-  const [showSelector, setShowSelector] = useState<any>(TASK_MODAL_STATUS)
+
   const {
     createTask: {
       createTaskFn,
@@ -46,19 +42,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({ open, onClose }) => {
   }
 
   const clearState = () => {
-    setDueDate('')
-    setLabel([])
-    setTitle('')
-    setAssignee({
-      icon: undefined,
-      title: '',
-      id: ''
-    })
-    setEstimate({
-      label: '',
-      value: ''
-    })
-    setShowSelector(TASK_MODAL_STATUS)
+    // ...code
   }
 
   const toggleSelector = (
@@ -72,12 +56,10 @@ export const TaskModal: React.FC<TaskModalProps> = ({ open, onClose }) => {
         options[optionKey] = false
       }
     })
-
-    setShowSelector({ ...options })
   }
 
   const submitTask = () => {
-    createTaskFn({
+    /* createTaskFn({
       variables: {
         input: {
           name: title,
@@ -92,7 +74,8 @@ export const TaskModal: React.FC<TaskModalProps> = ({ open, onClose }) => {
         onClose && onClose()
         clearState()
       }
-    })
+    }) */
+    console.log('submitTask', tags)
   }
 
   const handleClose = () => {
@@ -107,19 +90,42 @@ export const TaskModal: React.FC<TaskModalProps> = ({ open, onClose }) => {
           <input
             type="text"
             placeholder="Slack"
-            value={title}
-            onChange={({ target: { value } }) => setTitle(value)}
+            value={tags.name}
+            onChange={({ target: { value } }) =>
+              setTags({ ...tags, name: value })
+            }
           />
         </StyledTaskModalHeader>
         <StyledTaskModalBody>
           <StyledTaskModalBadgeList>
             <Selector
+              labelTitle="Estimate"
               optionListTitle="Estimate"
               items={SELECTOR_ESTIMATE_ITEMS}
+              selectedValue={tags.pointEstimate}
+              labelIcon={<IncreaseDecreaseIcon />}
+              onSelect={value =>
+                setTags({ ...tags, pointEstimate: value as string })
+              }
             />
             <Selector
-              optionListTitle="Assignee"
+              labelTitle="Assignee"
+              labelIcon={<UserFillIcon />}
+              optionListTitle="Assign To..."
               items={SELECTOR_ASSIGNEE_ITEMS}
+              selectedValue={tags.assigneeId}
+              onSelect={value =>
+                setTags({ ...tags, assigneeId: value as string })
+              }
+            />
+            <Selector
+              isMulti
+              labelTitle="Label"
+              labelIcon={<PriceTagFillIcon />}
+              optionListTitle="Tag Title"
+              items={SELECTOR_TASK_TAG_ITEMS}
+              selectedValue={tags.tags}
+              onSelect={value => setTags({ ...tags, tags: value as string[] })}
             />
           </StyledTaskModalBadgeList>
         </StyledTaskModalBody>

@@ -127,10 +127,3 @@ export const SELECTOR_TASK_TAG_ITEMS = [
     value: 'REACT'
   }
 ]
-
-export const TASK_MODAL_STATUS = {
-  estimate: false,
-  assignee: false,
-  label: false,
-  dueDate: false
-}
