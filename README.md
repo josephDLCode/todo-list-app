@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - hooks
 - icons
 - models
-- pages
+- pages // sirve como un contenedor general para la los componentes que componente la página
 - routes
 - services
 - styles

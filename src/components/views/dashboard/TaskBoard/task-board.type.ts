@@ -1,8 +1,3 @@
-interface TaskListProps {
-  tasks: TaskType
-  tasksIdsForState: TasksIdsForState
-}
-
 interface Column {
   id: string
   title: string

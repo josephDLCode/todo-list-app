@@ -3,23 +3,23 @@ import { Droppable, Draggable } from 'react-beautiful-dnd'
 
 import { TaskCard } from '../../../base/TaskCard'
 import {
-  StyledTaskColumn,
-  StyledTaskColumnBody,
-  StyledTaskColumnTitle
-} from './task-column.style'
+  StyledBoardColumn,
+  StyledBoardColumnBody,
+  StyledBoardColumnTitle
+} from './board-column.style'
 
-export const TaskColumn: React.FC<TaskColumn> = ({ title, tasks, id }) => {
+export const BoardColumn: React.FC<TaskColumn> = ({ title, tasks, id }) => {
   const [isOpenOptions, setIsOpenOptions] = useState({
     isOpen: false,
     id: ''
   })
 
   return (
-    <StyledTaskColumn>
-      <StyledTaskColumnTitle>{title}</StyledTaskColumnTitle>
+    <StyledBoardColumn>
+      <StyledBoardColumnTitle>{title}</StyledBoardColumnTitle>
       <Droppable droppableId={id}>
         {droppableProvided => (
-          <StyledTaskColumnBody
+          <StyledBoardColumnBody
             ref={droppableProvided.innerRef}
             {...droppableProvided.droppableProps}
           >
@@ -44,9 +44,9 @@ export const TaskColumn: React.FC<TaskColumn> = ({ title, tasks, id }) => {
                 )}
               </Draggable>
             ))}
-          </StyledTaskColumnBody>
+          </StyledBoardColumnBody>
         )}
       </Droppable>
-    </StyledTaskColumn>
+    </StyledBoardColumn>
   )
 }

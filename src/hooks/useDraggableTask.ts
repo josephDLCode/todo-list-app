@@ -1,19 +1,11 @@
-import { useState, useEffect } from 'react'
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import { useState } from 'react'
+import { DropResult } from 'react-beautiful-dnd'
 
-import {
-  reorderColumnList,
-  separateColumnTitle
-} from '../../../../utils/task-list.util'
-import { TaskColumn } from '../TaskColumn'
-import { StyledTaskList } from './task-list.style'
-import { TASK_LIST_STATUS } from '../../../../constants/task-list.constant'
-import { useTask } from '../../../../hooks/useTask'
+import { useTask } from './useTask'
+import { TASK_LIST_STATUS } from '../constants/task-list.constant'
+import { reorderColumnList, separateColumnTitle } from '../utils/task-list.util'
 
-export const TaskList: React.FC<TaskListProps> = ({
-  tasks,
-  tasksIdsForState
-}) => {
+export const useDraggableTask = () => {
   const [data, setData] = useState(TASK_LIST_STATUS)
   const {
     updateTask: { updateTaskFn }
@@ -90,48 +82,5 @@ export const TaskList: React.FC<TaskListProps> = ({
     setData(newState)
   }
 
-  useEffect(() => {
-    setData({
-      ...data,
-      tasks,
-      columns: {
-        ...data.columns,
-        TODO: {
-          ...data.columns.TODO,
-          title: `Working (${tasksIdsForState.TODO.length})`,
-          taskIds: tasksIdsForState.TODO
-        },
-        IN_PROGRESS: {
-          ...data.columns.IN_PROGRESS,
-          title: `In Progress (${tasksIdsForState.IN_PROGRESS.length})`,
-          taskIds: tasksIdsForState.IN_PROGRESS
-        },
-        DONE: {
-          ...data.columns.DONE,
-          title: `Completed (${tasksIdsForState.DONE.length})`,
-          taskIds: tasksIdsForState.DONE
-        }
-      }
-    })
-  }, [tasks])
-
-  return (
-    <DragDropContext onDragEnd={handleDragEnd}>
-      <StyledTaskList>
-        {data.columnOrder.map(columnId => {
-          const column = data.columns[columnId]
-          const tasks = column.taskIds.map((taskId: any) => data.tasks[taskId])
-
-          return (
-            <TaskColumn
-              tasks={tasks}
-              id={column.id}
-              key={column.id}
-              title={column.title}
-            />
-          )
-        })}
-      </StyledTaskList>
-    </DragDropContext>
-  )
+  return { handleDragEnd, data, setData }
 }

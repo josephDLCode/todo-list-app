@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 
-import { Button } from '../../uis/Button'
+import { Button } from '../../ui/Button'
 import { StyledTopBar } from './topbar.style'
 import { ListIcon } from '../../../icons/ListIcon'
-import { SwitchButton } from '../../uis/SwitchButton'
+import { SwitchButton } from '../../ui/SwitchButton'
 import { LayoutIcon } from '../../../icons/LayoutIcon'
 import { AddLineIcon } from '../../../icons/AddLineIcon'
 import { ModalContext } from '../../../contexts/ModalContext'

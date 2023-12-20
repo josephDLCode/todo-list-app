@@ -1,9 +1,8 @@
 interface SelectorProps {
-  title: string
-  items: SelectorItem[]
-  onSelect?: (value: string | string[]) => void
-  openSelector?: boolean
   isMulti?: boolean
+  items: SelectorItem[]
+  optionListTitle: string
+  onSelect?: (value: string | string[]) => void
 }
 
 interface SelectorItem {

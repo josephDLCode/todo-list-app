@@ -5,9 +5,9 @@ import { getTaskIds, structureTaskList } from '../utils/task-list.util'
 
 interface TaskContextProps {
   taskList: TaskType
-  taskIdsForTodo: string[]
-  taskIdsForDone: string[]
-  taskIdsForInProgress: string[]
+  todoTaskIds: string[]
+  doneTaskIds: string[]
+  doingTaskIds: string[]
 }
 
 export const TaskContext = createContext<TaskContextProps>(
@@ -19,17 +19,17 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
 
   const tasksArray = tasks.data?.tasks || []
   const taskList = structureTaskList(tasksArray)
-  const taskIdsForTodo = getTaskIds(tasksArray, 'TODO')
-  const taskIdsForInProgress = getTaskIds(tasksArray, 'IN_PROGRESS')
-  const taskIdsForDone = getTaskIds(tasksArray, 'DONE')
+  const todoTaskIds = getTaskIds(tasksArray, 'TODO')
+  const doingTaskIds = getTaskIds(tasksArray, 'IN_PROGRESS')
+  const doneTaskIds = getTaskIds(tasksArray, 'DONE')
 
   return (
     <TaskContext.Provider
       value={{
         taskList,
-        taskIdsForTodo,
-        taskIdsForInProgress,
-        taskIdsForDone
+        todoTaskIds,
+        doneTaskIds,
+        doingTaskIds
       }}
     >
       {children}

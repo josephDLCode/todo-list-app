@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { Input } from '../../uis/Input'
+import { Input } from '../../ui/Input'
 import { HeaderIcon } from '../HeaderIcon'
 import { SearchLineIcon } from '../../../icons/SearchLineIcon'
 import { SearchContext } from '../../../contexts/SearchContext'

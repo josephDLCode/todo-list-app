@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledTaskList = styled.div`
+export const StyledTaskBoard = styled.div`
   margin-top: 16px;
   height: calc(100% - 154px);
   display: grid;

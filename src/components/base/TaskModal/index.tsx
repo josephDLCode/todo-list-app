@@ -1,4 +1,3 @@
-import moment from 'moment'
 import { useState } from 'react'
 
 import {
@@ -14,16 +13,11 @@ import {
   SELECTOR_TASK_TAG_ITEMS,
   TASK_MODAL_STATUS
 } from '../../../constants/task-modal.constant'
-import { Modal } from '../../uis/Modal'
-import { Button } from '../../uis/Button'
-import { Selector } from '../../uis/Selector'
-import { Calendar } from '../../uis/Calendar'
+import { Modal } from '../../ui/Modal'
+import { Button } from '../../ui/Button'
+import { Selector } from '../../ui/Selector'
 import { useTask } from '../../../hooks/useTask'
-import { UserFillIcon } from '../../../icons/UserFillIcon'
-import { PriceTagFillIcon } from '../../../icons/PriceTagFillIcon'
 import { formateTimeForCalendar } from '../../../utils/common.util'
-import { IncreaseDecreaseIcon } from '../../../icons/IncreaseDecreaseIcon'
-import { CalendarCheckLineIcon } from '../../../icons/CalendarCheckLineIcon'
 
 export const TaskModal: React.FC<TaskModalProps> = ({ open, onClose }) => {
   const [estimate, setEstimate] = useState({
@@ -119,119 +113,14 @@ export const TaskModal: React.FC<TaskModalProps> = ({ open, onClose }) => {
         </StyledTaskModalHeader>
         <StyledTaskModalBody>
           <StyledTaskModalBadgeList>
-            <div>
-              <Button
-                color="secondary"
-                onClick={() =>
-                  toggleSelector(showSelector, {
-                    key: 'estimate',
-                    value: showSelector.estimate
-                  })
-                }
-              >
-                <IncreaseDecreaseIcon />
-                {estimate.label || 'Estimate'}
-              </Button>
-              <Selector
-                items={SELECTOR_ESTIMATE_ITEMS}
-                title="Estimate"
-                openSelector={showSelector.estimate}
-                onSelect={value => {
-                  const estimateValue = findSelectedItem(
-                    value as string,
-                    SELECTOR_ESTIMATE_ITEMS
-                  )
-                  setEstimate({
-                    label: estimateValue.label?.text || '',
-                    value: value as string
-                  })
-                  setShowSelector({ ...showSelector, estimate: false })
-                }}
-              />
-            </div>
-            <div>
-              <Button
-                color="secondary"
-                onClick={() =>
-                  toggleSelector(showSelector, {
-                    key: 'assignee',
-                    value: showSelector.assignee
-                  })
-                }
-              >
-                {assignee.icon || <UserFillIcon />}
-                {assignee.title || 'Assigne'}
-              </Button>
-              <Selector
-                items={SELECTOR_ASSIGNEE_ITEMS}
-                title="Assign To..."
-                openSelector={showSelector.assignee}
-                onSelect={value => {
-                  const assigneeValue = findSelectedItem(
-                    value as string,
-                    SELECTOR_ASSIGNEE_ITEMS
-                  )
-                  setAssignee({
-                    icon: assigneeValue.label?.icon || undefined,
-                    title: assigneeValue.label.text || '',
-                    id: value as string
-                  })
-                  setShowSelector({ ...showSelector, assignee: false })
-                }}
-              />
-            </div>
-            <div>
-              <Button
-                color="secondary"
-                onClick={() =>
-                  toggleSelector(showSelector, {
-                    key: 'label',
-                    value: showSelector.label
-                  })
-                }
-              >
-                <PriceTagFillIcon />
-                {label.length ? label.join(', ') : 'Label'}
-              </Button>
-              <Selector
-                isMulti
-                openSelector={showSelector.label}
-                title="Tag Title"
-                items={SELECTOR_TASK_TAG_ITEMS}
-                onSelect={value => {
-                  setLabel(value as string[])
-                  setShowSelector({ ...showSelector, label: false })
-                }}
-              />
-            </div>
-            <div>
-              <Button
-                color="secondary"
-                onClick={() =>
-                  toggleSelector(showSelector, {
-                    key: 'dueDate',
-                    value: showSelector.dueDate
-                  })
-                }
-              >
-                <CalendarCheckLineIcon />
-                {dueDate
-                  ? moment(formateTimeForCalendar(dueDate as any)).format(
-                      'MMM. DD YYYY'
-                    )
-                  : 'Due Date'}
-              </Button>
-              {showSelector.dueDate && (
-                <Calendar
-                  value={dueDate}
-                  onChange={(value: any) => {
-                    setDueDate(value as string)
-                    setShowSelector({ ...showSelector, dueDate: false })
-                  }}
-                  calendarType="gregory"
-                />
-              )}
-            </div>
+            <Selector
+              optionListTitle="Estimate"
+              items={SELECTOR_ESTIMATE_ITEMS}
+            />
+            <Selector
+              optionListTitle="Assignee"
+              items={SELECTOR_ASSIGNEE_ITEMS}
+            />
           </StyledTaskModalBadgeList>
         </StyledTaskModalBody>
         <StyledTaskModalFooter>

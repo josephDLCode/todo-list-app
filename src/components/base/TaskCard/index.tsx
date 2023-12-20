@@ -12,9 +12,9 @@ import {
   StyledTaskCardBodySecondRow,
   StyledCardOptions
 } from './task-card.style'
-import { Badge } from '../../uis/Badge'
-import { Avatar } from '../../uis/Avatar'
-import { IconButton } from '../../uis/IconButton'
+import { Badge } from '../../ui/Badge'
+import { Avatar } from '../../ui/Avatar'
+import { IconButton } from '../../ui/IconButton'
 import { ChatIcon } from '../../../icons/ChatIcon'
 import { FileIcon } from '../../../icons/FileIcon'
 import { TrashIcon } from '../../../icons/TrashIcon'

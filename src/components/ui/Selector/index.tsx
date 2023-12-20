@@ -3,63 +3,61 @@ import { GrCheckbox, GrCheckboxSelected } from 'react-icons/gr'
 
 import {
   StyledSelector,
+  StyledSelectorLabel,
   StyledSelectorTitle,
-  StyledSelectorListItem,
-  StyledSelectorListContainer
+  StyledSelectorOptions,
+  StyledSelectorItemsContainer
 } from './selector.style'
 
 export const Selector: React.FC<SelectorProps> = ({
   items,
-  title,
   isMulti,
   onSelect,
-  openSelector
+  optionListTitle
 }) => {
-  const [selected, setSelected] = useState<string[]>([])
+  const [openSelector, setOpenSelector] = useState(false)
+  const [selected, setSelected] = useState<string>('')
 
   const handleClick = (value: string) => {
-    let items = []
-    if (isMulti) {
-      if (selected.find(val => val === value)) {
-        items = selected.filter(val => val !== value)
-        setSelected(selected.filter(val => val !== value))
-      } else {
-        items = [...selected, value]
-        setSelected([...selected, value])
-      }
+    setSelected(value)
+    setOpenSelector(false)
+  }
 
-      onSelect && onSelect(items)
-      return
+  const getIcon = () => {
+    if (selected) {
+      return items.find(item => item.value === selected)?.label?.icon || null
+    } else {
+      return items.length > 0 ? items[0].label.icon : null
     }
-    onSelect && onSelect(value)
+  }
+
+  const getLabel = () => {
+    if (selected) {
+      return items.find(item => item.value === selected)?.label?.text || ''
+    } else {
+      return items.length > 0 ? items[0].label.text : 'Select'
+    }
   }
 
   return (
-    <>
+    <StyledSelector>
+      <StyledSelectorLabel onClick={() => setOpenSelector(!openSelector)}>
+        {getIcon()}
+        <span>{getLabel()}</span>
+      </StyledSelectorLabel>
       {openSelector && (
-        <StyledSelector>
-          <StyledSelectorTitle>{title}</StyledSelectorTitle>
-          <StyledSelectorListContainer>
+        <StyledSelectorOptions>
+          <StyledSelectorTitle>{optionListTitle}</StyledSelectorTitle>
+          <StyledSelectorItemsContainer>
             {items?.map(item => (
-              <StyledSelectorListItem
-                key={item.value}
-                onClick={() => handleClick(item.value)}
-              >
-                {isMulti ? (
-                  selected.find(val => item.value === val) ? (
-                    <GrCheckboxSelected />
-                  ) : (
-                    <GrCheckbox />
-                  )
-                ) : (
-                  item.label.icon
-                )}
+              <li key={item.value} onClick={() => handleClick(item.value)}>
+                {item.label.icon}
                 <span>{item.label.text}</span>
-              </StyledSelectorListItem>
+              </li>
             ))}
-          </StyledSelectorListContainer>
-        </StyledSelector>
+          </StyledSelectorItemsContainer>
+        </StyledSelectorOptions>
       )}
-    </>
+    </StyledSelector>
   )
 }

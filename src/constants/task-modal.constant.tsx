@@ -1,4 +1,4 @@
-import { Avatar } from '../components/uis/Avatar'
+import { Avatar } from '../components/ui/Avatar'
 import { IncreaseDecreaseIcon } from '../icons/IncreaseDecreaseIcon'
 
 export const SELECTOR_ESTIMATE_ITEMS = [
@@ -89,7 +89,7 @@ export const SELECTOR_ASSIGNEE_ITEMS = [
           src="https://i.stack.imgur.com/aW4ez.jpg?s=128&g=1"
         />
       ),
-      text: 'Joseph Francisco De La Cruz Rivas'
+      text: 'Joseph Rivas'
     },
     value: '5c103c09-3f11-44c7-be4d-50122eebfd1f'
   }

@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 
-import { Input } from '../../uis/Input'
+import { Input } from '../../ui/Input'
 import { HeaderIcon } from '../HeaderIcon'
-import { IconButton } from '../../uis/IconButton'
+import { IconButton } from '../../ui/IconButton'
 import { StyledTopNavBar } from './top-nav-bar.style'
 import { SearchLineIcon } from '../../../icons/SearchLineIcon'
 import { SearchContext } from '../../../contexts/SearchContext'

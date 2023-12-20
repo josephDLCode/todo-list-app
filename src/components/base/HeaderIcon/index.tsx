@@ -1,5 +1,5 @@
-import { Avatar } from '../../uis/Avatar'
-import { IconButton } from '../../uis/IconButton'
+import { Avatar } from '../../ui/Avatar'
+import { IconButton } from '../../ui/IconButton'
 import { BellIcon } from '../../../icons/BellIcon'
 import { StyledMobileHeaderIcon } from './header-icon.style'
 import { SearchCloseIcon } from '../../../icons/SearchCloseIcon'

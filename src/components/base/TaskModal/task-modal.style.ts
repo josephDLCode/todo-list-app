@@ -38,9 +38,8 @@ export const StyledTaskModalFooter = styled.footer`
 
 export const StyledTaskModalBadgeList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   place-items: center;
-
   gap: 8px;
 
   & > div {
@@ -51,7 +50,6 @@ export const StyledTaskModalBadgeList = styled.div`
       display: flex;
       align-items: center;
       gap: 8px;
-
       text-wrap: nowrap;
     }
 

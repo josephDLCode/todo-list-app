@@ -1,5 +1,5 @@
-import { Button } from '../../uis/Button'
-import { Modal } from '../../uis/Modal'
+import { Button } from '../../ui/Button'
+import { Modal } from '../../ui/Modal'
 import {
   StyledConfirmModal,
   StyledConfirmModalBody,

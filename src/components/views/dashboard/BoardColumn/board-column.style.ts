@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
-export const StyledTaskColumn = styled.div`
+export const StyledBoardColumn = styled.div`
   height: 100%;
   overflow: hidden;
 `
 
-export const StyledTaskColumnBody = styled.div`
+export const StyledBoardColumnBody = styled.div`
   height: calc(100% - 32px);
   overflow-y: auto;
 `
 
-export const StyledTaskColumnTitle = styled.h5`
+export const StyledBoardColumnTitle = styled.h5`
   font-size: 18px;
   font-weight: 600;
   line-height: 32px;
